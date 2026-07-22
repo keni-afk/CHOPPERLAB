@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOPPERLAB - Registro</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body class="login-page">
+
+    <header>
+        <div class="header-logo">
+            <img src="img/logo.png" alt="Logo CHOPPERLAB">
+            <div>
+                <div class="nombre-sistema">CHOPPERLAB</div>
+                <div class="sub-sistema">Sistema de Gestion de Laboratorio Clinico</div>
+            </div>
+            <button class="btn-menu" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <nav id="nav-principal">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="iniciar-sesion.html">Iniciar Sesion</a>
+        </nav>
+    </header>
+
+    <div class="login-main">
+        <div class="login-box">
+
+            <div class="login-logo">
+                <img src="img/logo.png" alt="Logo CHOPPERLAB">
+                <div class="nombre">CHOPPERLAB</div>
+                <div class="sub">Sistema de Gestion de Laboratorio Clinico</div>
+            </div>
+
+            <h2>Crear Cuenta</h2>
+
+            <form id="form-registro" action="#" method="post" onsubmit="registrarUsuario(event)">
+                <div class="form-group">
+                    <label>Nombre completo *</label>
+                    <input type="text" id="reg-nombre" placeholder="Ingrese su nombre completo"
+                        oninput="validarCampo(this)" required>
+                    <span class="campo-error" id="error-nombre"></span>
+                </div>
+                <div class="form-group">
+                    <label>Correo electronico *</label>
+                    <input type="email" id="reg-correo" placeholder="ejemplo@correo.com"
+                        oninput="validarCorreo(this)" required>
+                    <span class="campo-error" id="error-correo"></span>
+                </div>
+                <div class="form-group">
+                    <label>Contrasena *</label>
+                    <input type="password" id="reg-clave" placeholder="Minimo 6 caracteres"
+                        oninput="validarClave(this)" required>
+                    <span class="campo-error" id="error-clave"></span>
+                </div>
+                <div class="form-group">
+                    <label>Confirmar contrasena *</label>
+                    <input type="password" id="reg-clave2" placeholder="Repita su contrasena"
+                        oninput="validarClave2(this)" required>
+                    <span class="campo-error" id="error-clave2"></span>
+                </div>
+                <button type="submit" class="btn-login">Registrarse</button>
+            </form>
+
+            <p id="registro-ok" class="mensaje-ok" style="display:none;">
+                Registro exitoso. Puede iniciar sesion ahora.
+            </p>
+            <p id="error-registro" class="error-login" style="display:none;">
+                Complete todos los campos correctamente.
+            </p>
+
+            <div class="login-links">
+                <a href="iniciar-sesion.html">Ya tiene cuenta? Iniciar sesion</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>CHOPPERLAB &copy; 2026  </p>
+    </footer>
+
+    <script src="js/sesion.js"></script>
+    <script>
+        function validarCampo(input) {
+            var error = document.getElementById('error-' + input.id.replace('reg-', ''));
+            if (input.value.trim() === '') {
+                error.textContent = 'Este campo es obligatorio.';
+            } else {
+                error.textContent = '';
+            }
+        }
+
+        function validarCorreo(input) {
+            var error = document.getElementById('error-correo');
+            var patron = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!patron.test(input.value)) {
+                error.textContent = 'Ingrese un correo valido.';
+            } else {
+                error.textContent = '';
+            }
+        }
+
+        function validarClave(input) {
+            var error = document.getElementById('error-clave');
+            if (input.value.length < 6) {
+                error.textContent = 'La contrasena debe tener al menos 6 caracteres.';
+            } else {
+                error.textContent = '';
+            }
+        }
+
+        function validarClave2(input) {
+            var error = document.getElementById('error-clave2');
+            var clave = document.getElementById('reg-clave').value;
+            if (input.value !== clave) {
+                error.textContent = 'Las contrasenas no coinciden.';
+            } else {
+                error.textContent = '';
+            }
+        }
+
+        function registrarUsuario(e) {
+            e.preventDefault();
+            var nombre = document.getElementById('reg-nombre').value.trim();
+            var correo = document.getElementById('reg-correo').value.trim();
+            var clave = document.getElementById('reg-clave').value;
+            var clave2 = document.getElementById('reg-clave2').value;
+            var patron = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (nombre === '' || !patron.test(correo) || clave.length < 6 || clave !== clave2) {
+                document.getElementById('error-registro').style.display = 'block';
+                document.getElementById('registro-ok').style.display = 'none';
+            } else {
+                document.getElementById('registro-ok').style.display = 'block';
+                document.getElementById('error-registro').style.display = 'none';
+                document.getElementById('form-registro').reset();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

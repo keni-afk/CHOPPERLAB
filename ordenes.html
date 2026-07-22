@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOPPERLAB - Ordenes de Atencion</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="img/logo.png" alt="Logo CHOPPERLAB">
+            <div>
+                <div class="nombre-sistema">CHOPPERLAB</div>
+                <div class="sub-sistema">Sistema de Gestion de Laboratorio Clinico</div>
+            </div>
+            <button class="btn-menu" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <nav id="nav-principal">
+            <a href="intranet.html">Intranet</a>
+            <a href="ordenes.html" class="activo">Ordenes</a>
+            <a href="servicios.html">Servicios</a>
+            <div class="nav-sesion" id="nav-sesion" style="display:flex;">
+                <span class="nav-usuario">Hola, <strong id="nav-nombre"></strong></span>
+                <button class="btn-cerrar" onclick="abrirDialogoCierre()">Cerrar sesion</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="card">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+                <h2 style="margin-bottom:0;">Lista de Ordenes de Atencion</h2>
+                <button class="btn-interfaz" onclick="abrirInterfaz()">&#9654; Conectar interfaz</button>
+            </div>
+            <p>Ordenes registradas en el sistema para el dia de hoy — 27/06/2026.</p>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nro Atencion</th>
+                        <th>Nro Movimiento</th>
+                        <th>Fecha</th>
+                        <th>DNI</th>
+                        <th>Nombre Paciente</th>
+                        <th>Procedencia</th>
+                        <th>Estado</th>
+                        <th>Etiqueta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1179838</td><td>974593</td><td>27/06/2026</td><td>07423900</td>
+                        <td>AXL MARTIN RUBIO TAVARA</td><td>CONSULTA EXTERNA</td>
+                        <td><span class="badge badge-success">Realizado</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                    <tr id="fila-brandon">
+                        <td>1179901</td><td>974720</td><td>27/06/2026</td><td>45231067</td>
+                        <td>BRANDON NAHUIN GONZALES</td><td>HOSPITALIZACION</td>
+                        <td id="estado-brandon"><span class="badge badge-warning">Pendiente</span></td>
+                        <td id="etiqueta-brandon">
+                            <button class="btn-etiqueta btn-etiqueta-si" onclick="imprimirEtiqueta('1179901','BRANDON NAHUIN GONZALES','45231067')">Imprimir etiqueta</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1179955</td><td>974810</td><td>27/06/2026</td><td>72741040</td>
+                        <td><a href="#" class="enlace-paciente" onclick="abrirDetalle(); return false;">ADRIANO ORTEGA PEREZ</a></td>
+                        <td>CONSULTA EXTERNA</td>
+                        <td><span class="badge badge-success">Realizado</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                    <tr>
+                        <td>1180012</td><td>974901</td><td>27/06/2026</td><td>61234500</td>
+                        <td>NANAMI KENTO</td><td>EMERGENCIA</td>
+                        <td><span class="badge badge-danger">En proceso</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                    <tr>
+                        <td>1180045</td><td>974980</td><td>27/06/2026</td><td>33781290</td>
+                        <td>ESTEFANY PEREZ HUAMAN</td><td>HOSPITALIZACION</td>
+                        <td><span class="badge badge-success">Realizado</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                    <tr>
+                        <td>1180078</td><td>975010</td><td>27/06/2026</td><td>48920134</td>
+                        <td>CRISTIAN RODRIGUEZ MENDOZA</td><td>CONSULTA EXTERNA</td>
+                        <td><span class="badge badge-warning">Pendiente</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-si" onclick="imprimirEtiqueta('1180078','CRISTIAN RODRIGUEZ MENDOZA','48920134')">Imprimir etiqueta</button></td>
+                    </tr>
+                    <tr>
+                        <td>1180090</td><td>975020</td><td>27/06/2026</td><td>61234501</td>
+                        <td>RYOMEN SUKUNA</td><td>EMERGENCIA</td>
+                        <td><span class="badge badge-danger">En proceso</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                    <tr>
+                        <td>1180095</td><td>975025</td><td>27/06/2026</td><td>61234502</td>
+                        <td>MEGUMI FUSHIGURO</td><td>EMERGENCIA</td>
+                        <td><span class="badge badge-success">Realizado</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                    <tr>
+                        <td>1180100</td><td>975030</td><td>27/06/2026</td><td>61234503</td>
+                        <td>NOBARA KUGISAKI</td><td>EMERGENCIA</td>
+                        <td><span class="badge badge-danger">En proceso</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                    <tr>
+                        <td>1180105</td><td>975035</td><td>27/06/2026</td><td>61234504</td>
+                        <td>SATORU GOJO</td><td>EMERGENCIA</td>
+                        <td><span class="badge badge-success">Realizado</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                    <tr>
+                        <td>1180110</td><td>975040</td><td>27/06/2026</td><td>61234505</td>
+                        <td>SHOKO IEIRI</td><td>EMERGENCIA</td>
+                        <td><span class="badge badge-success">Realizado</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                    <tr>
+                        <td>1180115</td><td>975045</td><td>27/06/2026</td><td>61234506</td>
+                        <td>KINJI HAKARI</td><td>EMERGENCIA</td>
+                        <td><span class="badge badge-success">Realizado</span></td>
+                        <td><button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <div class="ventana-interfaz" id="ventana-interfaz">
+        <div class="interfaz-barra">
+            <div>
+                <div class="interfaz-titulo">CHOPPERLAB — Software de Interfaces</div>
+                <div class="interfaz-equipo">EQUIPO ORTHO VISION 3400 &nbsp;|&nbsp; <span id="estado-conexion-texto">Desconectado</span></div>
+            </div>
+            <button class="interfaz-cerrar" onclick="cerrarInterfaz()">&#10005;</button>
+        </div>
+        <div class="interfaz-estado">
+            <div class="interfaz-led" id="led-conexion"></div>
+            <span class="interfaz-estado-texto" id="texto-led">Sin conexion</span>
+            <button class="btn-conectar" id="btn-conectar" onclick="conectarInterfaz()">Conectar</button>
+            <button class="btn-desconectar" id="btn-desconectar" onclick="desconectarInterfaz()">Desconectar</button>
+        </div>
+        <div class="interfaz-cabecera-log">
+            <span>Hora</span>
+            <span>Proceso</span>
+            <span>Descripcion</span>
+        </div>
+        <div class="interfaz-log" id="interfaz-log"></div>
+    </div>
+
+    <dialog id="dialogo-etiqueta">
+        <p id="dialogo-etiqueta-texto"></p>
+        <button onclick="document.getElementById('dialogo-etiqueta').close()">Cerrar</button>
+    </dialog>
+
+    <dialog id="dialogo-no-disponible">
+        <p>No es posible generar etiqueta. Solo se pueden imprimir etiquetas para ordenes con estado <strong>Pendiente</strong>.</p>
+        <button onclick="document.getElementById('dialogo-no-disponible').close()">Cerrar</button>
+    </dialog>
+
+    <dialog id="dialogo-detalle">
+        <div class="detalle-header-info">
+            <h3>Detalle de Atencion N° 1179955</h3>
+            <p>Paciente: <strong>ADRIANO ORTEGA PEREZ</strong> &nbsp;|&nbsp; DNI: 72741040 &nbsp;|&nbsp; Procedencia: CONSULTA EXTERNA &nbsp;|&nbsp; Medico: MEDICO TRATANTE</p>
+        </div>
+        <div class="detalle-selector">
+            <label>Seleccionar examen:</label>
+            <select id="selector-examen" onchange="cambiarExamen()">
+                <option value="hem002">Hematologia — Perfil de Coagulacion (HEM-002)</option>
+                <option value="hem005">Hematologia — Anticoagulante Lupico (HEM-005)</option>
+            </select>
+        </div>
+        <div id="tabla-hem002" class="tabla-examen">
+            <h4>Area: Hematologia — Examen: Perfil de Coagulacion (HEM-002)</h4>
+            <table>
+                <thead>
+                    <tr><th>#</th><th>Prueba</th><th>Resultado</th><th>Unidad</th><th>Referencia</th><th>Estado</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Tiempo de Protrombina (TP)</td><td>13.2</td><td>seg</td><td>11.0 - 14.0</td><td><span class="badge badge-success">Normal</span></td></tr>
+                    <tr><td>2</td><td>Tiempo de Tromboplastina (TPA)</td><td>32.5</td><td>seg</td><td>25.0 - 38.0</td><td><span class="badge badge-success">Normal</span></td></tr>
+                    <tr><td>3</td><td>INR</td><td>1.05</td><td>—</td><td>0.8 - 1.2</td><td><span class="badge badge-success">Normal</span></td></tr>
+                    <tr><td>4</td><td>Fibrinogeno</td><td>380</td><td>mg/dL</td><td>200 - 400</td><td><span class="badge badge-success">Normal</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="tabla-hem005" class="tabla-examen" style="display:none;">
+            <h4>Area: Hematologia — Examen: Anticoagulante Lupico (HEM-005)</h4>
+            <table>
+                <thead>
+                    <tr><th>#</th><th>Prueba</th><th>Resultado</th><th>Unidad</th><th>Referencia</th><th>Estado</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Screen Paciente</td><td>42.00</td><td>seg</td><td>—</td><td><span class="badge badge-warning">Pendiente confirmar</span></td></tr>
+                    <tr><td>2</td><td>Screen Control</td><td>34.00</td><td>seg</td><td>—</td><td><span class="badge badge-success">Registrado</span></td></tr>
+                    <tr><td>3</td><td>Ratio Screen</td><td>1.24</td><td>—</td><td>menor a 1.20</td><td><span class="badge badge-danger">Elevado</span></td></tr>
+                    <tr><td>4</td><td>Confirmatorio Paciente</td><td>—</td><td>seg</td><td>—</td><td><span class="badge badge-warning">Pendiente</span></td></tr>
+                    <tr><td>5</td><td>Observacion</td><td colspan="3">MUESTRA CONGELADA</td><td><span class="badge badge-warning">En proceso</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn-cerrar-dialogo" onclick="document.getElementById('dialogo-detalle').close()">Cerrar</button>
+    </dialog>
+
+    <dialog id="dialogo-brandon">
+        <div class="detalle-header-info">
+            <h3>Detalle de Atencion N° 1179901</h3>
+            <p>Paciente: <strong>BRANDON NAHUIN GONZALES</strong> &nbsp;|&nbsp; DNI: 45231067 &nbsp;|&nbsp; Procedencia: HOSPITALIZACION &nbsp;|&nbsp; Medico: MEDICO TRATANTE</p>
+        </div>
+        <div class="tabla-examen">
+            <h4>Area: Hematologia — Examen: Hemograma Completo (HEM-001)</h4>
+            <table>
+                <thead>
+                    <tr><th>#</th><th>Prueba</th><th>Resultado</th><th>Unidad</th><th>Referencia</th><th>Estado</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Hematocrito</td><td>42.5</td><td>%</td><td>40.0 - 52.0</td><td><span class="badge badge-success">Normal</span></td></tr>
+                    <tr><td>2</td><td>Hemoglobina</td><td>14.2</td><td>g/dL</td><td>13.5 - 17.5</td><td><span class="badge badge-success">Normal</span></td></tr>
+                    <tr><td>3</td><td>Leucocitos</td><td>11.8</td><td>x10³/uL</td><td>4.5 - 11.0</td><td><span class="badge badge-danger">Elevado</span></td></tr>
+                    <tr><td>4</td><td>Plaquetas</td><td>215</td><td>x10³/uL</td><td>150 - 400</td><td><span class="badge badge-success">Normal</span></td></tr>
+                    <tr><td>5</td><td>Neutrofilos</td><td>78.2</td><td>%</td><td>50.0 - 70.0</td><td><span class="badge badge-danger">Elevado</span></td></tr>
+                    <tr><td>6</td><td>Linfocitos</td><td>15.3</td><td>%</td><td>20.0 - 40.0</td><td><span class="badge badge-warning">Bajo</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn-cerrar-dialogo" onclick="document.getElementById('dialogo-brandon').close()">Cerrar</button>
+    </dialog>
+
+    <dialog id="dialogo-cierre">
+        <p>&#191;Esta seguro que desea cerrar sesion?</p>
+        <button onclick="cerrarSesion()">Si, salir</button>
+        <button onclick="document.getElementById('dialogo-cierre').close()">Cancelar</button>
+    </dialog>
+
+    <footer>
+        <p>CHOPPERLAB &copy; 2026</p>
+    </footer>
+
+    <script src="js/sesion.js"></script>
+    <script>
+        verificarSesion();
+        actualizarNav();
+
+        var interfazConectada = false;
+        var intervaloPasos = null;
+        var etiquetaImpresa = false;
+
+        var logBrandon = [
+            { proceso: '[REPORT]',  desc: 'Abierto Puerto COM 4 — Parametros: 9600 N 8 1' },
+            { proceso: '[INPUT]',   desc: 'Analysis Data — Numero: 9201135705 — BRANDON NAHUIN GONZALES' },
+            { proceso: '[INPUT]',   desc: 'Descripcion: HEMOGRAMA COMPLETO — Codigo: HEM-001' },
+            { proceso: '[INPUT]',   desc: 'HEMATOCRITO — Resultado: 42.5 %' },
+            { proceso: '[INPUT]',   desc: 'HEMOGLOBINA — Resultado: 14.2 g/dL', resaltado: true },
+            { proceso: '[INPUT]',   desc: 'LEUCOCITOS — Resultado: 11.8 x10³/uL', alerta: true },
+            { proceso: '[INPUT]',   desc: 'PLAQUETAS — Resultado: 215 x10³/uL' },
+            { proceso: '[INPUT]',   desc: 'NEUTROFILOS — Resultado: 78.2 %', alerta: true },
+            { proceso: '[INPUT]',   desc: 'LINFOCITOS — Resultado: 15.3 %', alerta: true },
+            { proceso: '[SAVE]',    desc: 'CHOPPERLAB_GRABA_RESULTADO — HEM-001 — Numero: 9201135705', resaltado: true },
+            { proceso: '[AUDIT]',   desc: 'Graba Auditoria Numero: 9201135705 — HEMOGRAMA COMPLETO' },
+            { proceso: '[SAVE]',    desc: 'Resultado guardado correctamente en el sistema', resaltado: true },
+        ];
+
+        function obtenerHora() {
+            var d = new Date();
+            return d.toLocaleTimeString('es-PE', { hour12: false });
+        }
+
+        function agregarLog(proceso, desc, resaltado, alerta) {
+            var log = document.getElementById('interfaz-log');
+            var fila = document.createElement('div');
+            fila.className = 'log-fila';
+            var claseDesc = 'log-descripcion';
+            if (resaltado) claseDesc += ' resaltado';
+            if (alerta) claseDesc += ' alerta';
+            fila.innerHTML =
+                '<span class="log-hora">' + obtenerHora() + '</span>' +
+                '<span class="log-proceso">' + proceso + '</span>' +
+                '<span class="' + claseDesc + '">' + desc + '</span>';
+            log.appendChild(fila);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function abrirInterfaz() {
+            document.getElementById('ventana-interfaz').classList.add('visible');
+        }
+
+        function cerrarInterfaz() {
+            document.getElementById('ventana-interfaz').classList.remove('visible');
+            if (intervaloPasos) {
+                clearInterval(intervaloPasos);
+                intervaloPasos = null;
+            }
+            if (etiquetaImpresa) {
+                var celdaNombre = document.querySelector('#fila-brandon td:nth-child(5)');
+                celdaNombre.innerHTML = '<a href="#" class="enlace-paciente" onclick="abrirDetalleBrandon(); return false;">BRANDON NAHUIN GONZALES</a>';
+                document.getElementById('etiqueta-brandon').innerHTML =
+                    '<button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">No disponible</button>';
+            }
+        }
+
+        function desconectarInterfaz() {
+            interfazConectada = false;
+            if (intervaloPasos) {
+                clearInterval(intervaloPasos);
+                intervaloPasos = null;
+            }
+            document.getElementById('led-conexion').classList.remove('conectado');
+            document.getElementById('texto-led').textContent = 'Desconectado';
+            document.getElementById('estado-conexion-texto').textContent = 'Desconectado';
+            document.getElementById('btn-conectar').textContent = 'Conectar';
+            document.getElementById('btn-conectar').style.backgroundColor = '';
+            document.getElementById('btn-conectar').style.display = '';
+            document.getElementById('btn-desconectar').style.display = 'none';
+            agregarLog('[REPORT]', 'Conexion cerrada — Puerto COM 4 desconectado', false, false);
+        }
+
+        function conectarInterfaz() {
+            if (interfazConectada) return;
+            interfazConectada = true;
+            document.getElementById('led-conexion').classList.add('conectado');
+            document.getElementById('texto-led').textContent = 'Conectado — Link Int: 23';
+            document.getElementById('estado-conexion-texto').textContent = 'Conectado';
+            document.getElementById('btn-conectar').style.display = 'none';
+            document.getElementById('btn-desconectar').style.display = '';
+            agregarLog('[REPORT]', 'Abierto Puerto COM 4 — Parametros: 9600 N 8 1', false, false);
+            agregarLog('[REPORT]', 'EQUIPO ORTHO VISION 3400 — Link Int: 23 Conectado', true, false);
+        }
+
+        function imprimirEtiqueta(nroAtencion, paciente, dni) {
+            document.getElementById('dialogo-etiqueta-texto').textContent =
+                'Etiqueta impresa — Atencion: ' + nroAtencion + ' | Paciente: ' + paciente + ' | DNI: ' + dni;
+            document.getElementById('dialogo-etiqueta').showModal();
+
+            if (nroAtencion === '1179901' && interfazConectada) {
+                etiquetaImpresa = true;
+                document.getElementById('estado-brandon').innerHTML = '<span class="badge badge-danger">En proceso</span>';
+                document.getElementById('etiqueta-brandon').innerHTML =
+                    '<button class="btn-etiqueta btn-etiqueta-no" onclick="mostrarNoDisponible()">Procesando...</button>';
+
+                var paso = 0;
+                intervaloPasos = setInterval(function () {
+                    if (paso < logBrandon.length) {
+                        var l = logBrandon[paso];
+                        agregarLog(l.proceso, l.desc, l.resaltado || false, l.alerta || false);
+                        paso++;
+                    } else {
+                        clearInterval(intervaloPasos);
+                        intervaloPasos = null;
+                    }
+                }, 600);
+            }
+        }
+
+        function mostrarNoDisponible() {
+            document.getElementById('dialogo-no-disponible').showModal();
+        }
+
+        function abrirDetalle() {
+            document.getElementById('selector-examen').value = 'hem002';
+            cambiarExamen();
+            document.getElementById('dialogo-detalle').showModal();
+        }
+
+        function abrirDetalleBrandon() {
+            document.getElementById('dialogo-brandon').showModal();
+        }
+
+        function cambiarExamen() {
+            var valor = document.getElementById('selector-examen').value;
+            document.getElementById('tabla-hem002').style.display = valor === 'hem002' ? 'block' : 'none';
+            document.getElementById('tabla-hem005').style.display = valor === 'hem005' ? 'block' : 'none';
+        }
+
+        function abrirDialogoCierre() {
+            document.getElementById('dialogo-cierre').showModal();
+        }
+    </script>
+
+</body>
+
+</html>

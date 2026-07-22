@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOPPERLAB - Nosotros</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="img/logo.png" alt="Logo CHOPPERLAB">
+            <div>
+                <div class="nombre-sistema">CHOPPERLAB</div>
+                <div class="sub-sistema">Sistema de Gestion de Laboratorio Clinico</div>
+            </div>
+            <button class="btn-menu" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <nav id="nav-principal">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html" class="activo">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="ordenes.html" class="nav-privado" style="display:none;">Ordenes</a>
+            <a href="intranet.html" class="nav-privado" style="display:none;">Intranet</a>
+            <a href="iniciar-sesion.html" id="nav-ingresar">Ingresar</a>
+            <div class="nav-sesion" id="nav-sesion">
+                <span class="nav-usuario">Hola, <strong id="nav-nombre"></strong></span>
+                <button class="btn-cerrar" onclick="abrirDialogoCierre()">Cerrar sesion</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <img src="img/laboratory.png" alt="Laboratorio CHOPPERLAB" class="banner">
+
+        <div class="card">
+            <h2>Quienes Somos</h2>
+            <p>
+                CHOPPERLAB es un laboratorio clinico ficticio especializado en el analisis de muestras
+                biologicas para el apoyo diagnostico de profesionales de la salud. Contamos con
+                tecnologia de ultima generacion y un equipo altamente capacitado.
+            </p>
+        </div>
+
+        <div class="nosotros-grid">
+
+            <div class="nosotros-seccion animar-entrada">
+                <h3>Mision</h3>
+                <p>
+                    Brindar servicios de laboratorio clinico de alta calidad, con resultados
+                    oportunos y confiables, contribuyendo al diagnostico y tratamiento oportuno
+                    de los pacientes atendidos en las instituciones de salud.
+                </p>
+            </div>
+
+            <div class="nosotros-seccion animar-entrada">
+                <h3>Vision</h3>
+                <p>
+                    Ser el laboratorio clinico de referencia a nivel nacional, reconocido por la
+                    excelencia en la calidad de sus analisis, la innovacion tecnologica y el
+                    compromiso con la salud de la poblacion peruana.
+                </p>
+            </div>
+
+            <div class="nosotros-seccion animar-entrada">
+                <h3>Nuestra Historia</h3>
+                <div class="nosotros-foto">
+                    <img src="img/microscopio.png" alt="Laboratorio CHOPPERLAB">
+                    <p>
+                        Fundado en 2010, CHOPPERLAB inicio operaciones con un pequeno equipo de
+                        bioquimicos comprometidos con la calidad. Hoy contamos con 4 sedes en
+                        Lima y mas de 50 profesionales especializados.
+                    </p>
+                </div>
+            </div>
+
+            <div class="nosotros-seccion animar-entrada">
+                <h3>Nuestros Valores</h3>
+                <ul>
+                    <li>Calidad y precision en cada analisis</li>
+                    <li>Compromiso con el paciente</li>
+                    <li>Innovacion tecnologica constante</li>
+                    <li>Etica profesional y transparencia</li>
+                    <li>Trabajo en equipo y colaboracion</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <h2>Nuestro Equipo Directivo</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cargo</th>
+                        <th>Especialidad</th>
+                        <th>Anos de experiencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dra. Pamela Bautista</td>
+                        <td>Directora General</td>
+                        <td>Medicina Interna</td>
+                        <td>20 anos</td>
+                    </tr>
+                    <tr>
+                        <td>Lic. Sonia Huaman</td>
+                        <td>Jefa de Laboratorio</td>
+                        <td>Bioquimica Clinica</td>
+                        <td>15 anos</td>
+                    </tr>
+                    <tr>
+                        <td>Lic. Julio Mosquera</td>
+                        <td>Coordinador de Calidad</td>
+                        <td>Microbiologia</td>
+                        <td>12 anos</td>
+                    </tr>
+                    <tr>
+                        <td>Lic. Jannet Ramos</td>
+                        <td>Jefa de Hematologia</td>
+                        <td>Hematologia Clinica</td>
+                        <td>10 anos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <dialog id="dialogo-cierre">
+        <p>&iquest;Esta seguro que desea cerrar sesion?</p>
+        <button onclick="cerrarSesion()">Si, salir</button>
+        <button onclick="document.getElementById('dialogo-cierre').close()">Cancelar</button>
+    </dialog>
+
+    <footer>
+        <p>CHOPPERLAB &copy; 2026  </p>
+    </footer>
+
+
+    <script src="js/sesion.js"></script>
+    <script>
+        actualizarNav();
+    </script>
+
+</body>
+
+</html>

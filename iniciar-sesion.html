@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOPPERLAB - Iniciar Sesion</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body class="login-page">
+
+    <header>
+        <div class="header-logo">
+            <img src="img/logo.png" alt="Logo CHOPPERLAB">
+            <div>
+                <div class="nombre-sistema">CHOPPERLAB</div>
+                <div class="sub-sistema">Sistema de Gestion de Laboratorio Clinico</div>
+            </div>
+            <button class="btn-menu" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <nav id="nav-principal">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <div class="login-main">
+        <div class="login-box">
+
+            <div class="login-logo">
+                <img src="img/logo.png" alt="Logo CHOPPERLAB">
+                <div class="nombre">CHOPPERLAB</div>
+                <div class="sub">Sistema de Gestion de Laboratorio Clinico</div>
+            </div>
+
+            <h2>Acceso al Sistema</h2>
+
+            <form id="form-login" action="#" method="post" onsubmit="iniciarSesion(event)">
+                <div class="form-group">
+                    <label>Correo electronico *</label>
+                    <input type="email" id="input-usuario" placeholder="Ingrese su correo" oninput="validarCorreoLogin(this)" required>
+                    <span class="campo-error" id="error-usuario"></span>
+                </div>
+                <div class="form-group">
+                    <label>Contrasena *</label>
+                    <input type="password" id="input-clave" placeholder="Ingrese su contrasena" oninput="validarClaveLogin(this)" required>
+                    <span class="campo-error" id="error-clave-login"></span>
+                </div>
+                <button type="submit" class="btn-login">Ingresar al sistema</button>
+                <a href="registro.html" class="btn-registro">Crear cuenta nueva</a>
+            </form>
+
+            <p id="error-login" class="error-login">
+                Credenciales no validas.
+            </p>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>CHOPPERLAB &copy; 2026  </p>
+    </footer>
+
+    <script>
+        if (sessionStorage.getItem('CHOPPERLABUsuario')) {
+            window.location.href = 'intranet.html';
+        }
+
+
+        function validarCorreoLogin(input) {
+            var error = document.getElementById('error-usuario');
+            var patron = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!patron.test(input.value)) {
+                error.textContent = 'Ingrese un correo valido.';
+            } else {
+                error.textContent = '';
+            }
+        }
+
+        function validarClaveLogin(input) {
+            var error = document.getElementById('error-clave-login');
+            if (input.value.length < 6) {
+                error.textContent = 'Minimo 6 caracteres.';
+            } else {
+                error.textContent = '';
+            }
+        }
+
+        function iniciarSesion(e) {
+            e.preventDefault();
+            var usuario = document.getElementById('input-usuario').value;
+            var clave = document.getElementById('input-clave').value;
+
+            if (usuario === 'admin@mail.com' && clave === '123456') {
+                sessionStorage.setItem('CHOPPERLABUsuario', usuario);
+                window.location.href = 'intranet.html';
+            } else {
+                document.getElementById('error-login').style.display = 'block';
+            }
+        }
+    </script>
+
+    <script src="js/sesion.js"></script>
+</body>
+
+</html>

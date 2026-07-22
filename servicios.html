@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOPPERLAB - Servicios</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="img/logo.png" alt="Logo CHOPPERLAB">
+            <div>
+                <div class="nombre-sistema">CHOPPERLAB</div>
+                <div class="sub-sistema">Sistema de Gestion de Laboratorio Clinico</div>
+            </div>
+            <button class="btn-menu" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <nav id="nav-principal">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html" class="activo">Servicios</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="ordenes.html" class="nav-privado" style="display:none;">Ordenes</a>
+            <a href="intranet.html" class="nav-privado" style="display:none;">Intranet</a>
+            <a href="iniciar-sesion.html" id="nav-ingresar">Ingresar</a>
+            <div class="nav-sesion" id="nav-sesion">
+                <span class="nav-usuario">Hola, <strong id="nav-nombre"></strong></span>
+                <button class="btn-cerrar" onclick="abrirDialogoCierre()">Cerrar sesion</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <img src="img/laboratory.png" alt="Servicios CHOPPERLAB" class="banner">
+
+        <div class="card">
+            <h2>Catalogo de Servicios</h2>
+            <p>
+                Cada area del laboratorio gestiona un conjunto de examenes especificos.
+                Dentro de cada examen se procesan una o mas pruebas con sus valores de referencia y resultados.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="area-cabecera">
+                <img src="img/hematologia.png" alt="Hematologia" class="area-imagen">
+                <div>
+                    <h2>Hematologia</h2>
+                    <p>Analisis de celulas sanguineas y factores de coagulacion.</p>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Examen</th>
+                        <th>Pruebas incluidas</th>
+                        <th>Muestra</th>
+                        <th>Entrega</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HEM-001</td>
+                        <td>Hemograma completo</td>
+                        <td>Hematocrito, hemoglobina, leucocitos, plaquetas, recuento diferencial</td>
+                        <td>Sangre venosa EDTA</td>
+                        <td>2 horas</td>
+                    </tr>
+                    <tr>
+                        <td>HEM-002</td>
+                        <td>Perfil de coagulacion</td>
+                        <td>Tiempo de protrombina (TP), tiempo de tromboplastina (TPA), fibrinogeno, INR</td>
+                        <td>Sangre venosa citratada</td>
+                        <td>3 horas</td>
+                    </tr>
+                    <tr>
+                        <td>HEM-003</td>
+                        <td>Factor VIII</td>
+                        <td>Actividad del factor VIII de coagulacion</td>
+                        <td>Plasma citratado</td>
+                        <td>4 horas</td>
+                    </tr>
+                    <tr>
+                        <td>HEM-004</td>
+                        <td>Factor IX</td>
+                        <td>Actividad del factor IX de coagulacion</td>
+                        <td>Plasma citratado</td>
+                        <td>4 horas</td>
+                    </tr>
+                    <tr>
+                        <td>HEM-005</td>
+                        <td>Anticoagulante Lupico</td>
+                        <td>Screen paciente, screen control, ratio, confirmatorio</td>
+                        <td>Plasma citratado</td>
+                        <td>6 horas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="area-cabecera">
+                <img src="img/bioquimica.png" alt="Bioquimica Clinica" class="area-imagen">
+                <div>
+                    <h2>Bioquimica Clinica</h2>
+                    <p>Determinacion de metabolitos, enzimas y sustratos en sangre y orina.</p>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Examen</th>
+                        <th>Pruebas incluidas</th>
+                        <th>Muestra</th>
+                        <th>Entrega</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BIO-001</td>
+                        <td>Glucosa en ayunas</td>
+                        <td>Glucosa serica</td>
+                        <td>Suero</td>
+                        <td>2 horas</td>
+                    </tr>
+                    <tr>
+                        <td>BIO-002</td>
+                        <td>Perfil lipidico</td>
+                        <td>Colesterol total, HDL, LDL, trigliceridos, VLDL</td>
+                        <td>Suero (ayunas 12h)</td>
+                        <td>3 horas</td>
+                    </tr>
+                    <tr>
+                        <td>BIO-003</td>
+                        <td>Perfil hepatico</td>
+                        <td>TGO, TGP, bilirrubinas, albumina, proteinas totales, fosfatasa alcalina</td>
+                        <td>Suero</td>
+                        <td>4 horas</td>
+                    </tr>
+                    <tr>
+                        <td>BIO-004</td>
+                        <td>Funcion renal</td>
+                        <td>Urea, creatinina, acido urico, tasa de filtracion glomerular (TFG)</td>
+                        <td>Suero</td>
+                        <td>3 horas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="area-cabecera">
+                <img src="img/microbiologia.png" alt="Microbiologia" class="area-imagen">
+                <div>
+                    <h2>Microbiologia</h2>
+                    <p>Identificacion de microorganismos y evaluacion de sensibilidad antibiotica.</p>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Examen</th>
+                        <th>Pruebas incluidas</th>
+                        <th>Muestra</th>
+                        <th>Entrega</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MIC-001</td>
+                        <td>Urocultivo</td>
+                        <td>Cultivo, identificacion de germen, antibiograma</td>
+                        <td>Orina de chorro medio</td>
+                        <td>48 horas</td>
+                    </tr>
+                    <tr>
+                        <td>MIC-002</td>
+                        <td>Hemocultivo</td>
+                        <td>Cultivo aerobio y anaerobio, identificacion, sensibilidad</td>
+                        <td>Sangre venosa</td>
+                        <td>72 horas</td>
+                    </tr>
+                    <tr>
+                        <td>MIC-003</td>
+                        <td>Coprocultivo</td>
+                        <td>Cultivo para enterobacterias, identificacion de patogeno</td>
+                        <td>Heces frescas</td>
+                        <td>48 horas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="area-cabecera">
+                <img src="img/inmunologia.png" alt="Inmunologia" class="area-imagen">
+                <div>
+                    <h2>Inmunologia</h2>
+                    <p>Evaluacion del sistema inmune, autoanticuerpos y marcadores tumorales.</p>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Examen</th>
+                        <th>Pruebas incluidas</th>
+                        <th>Muestra</th>
+                        <th>Entrega</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>INM-001</td>
+                        <td>Perfil de autoinmunidad</td>
+                        <td>ANA, anti-ADN, ANCA, complemento C3 y C4</td>
+                        <td>Suero</td>
+                        <td>24 horas</td>
+                    </tr>
+                    <tr>
+                        <td>INM-002</td>
+                        <td>Marcadores tumorales basicos</td>
+                        <td>CEA, AFP, CA 125, CA 19-9, PSA total</td>
+                        <td>Suero</td>
+                        <td>24 horas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="area-cabecera">
+                <img src="img/hormonologia.png" alt="Hormonologia" class="area-imagen">
+                <div>
+                    <h2>Hormonologia</h2>
+                    <p>Medicion de hormonas y evaluacion del sistema endocrino.</p>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Examen</th>
+                        <th>Pruebas incluidas</th>
+                        <th>Muestra</th>
+                        <th>Entrega</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HOR-001</td>
+                        <td>Perfil tiroideo completo</td>
+                        <td>TSH, T3 libre, T4 libre, anticuerpos anti-TPO</td>
+                        <td>Suero</td>
+                        <td>6 horas</td>
+                    </tr>
+                    <tr>
+                        <td>HOR-002</td>
+                        <td>Hormonas reproductivas femeninas</td>
+                        <td>FSH, LH, estradiol, progesterona, prolactina</td>
+                        <td>Suero</td>
+                        <td>6 horas</td>
+                    </tr>
+                    <tr>
+                        <td>HOR-003</td>
+                        <td>Cortisol y ACTH</td>
+                        <td>Cortisol basal, ACTH, cortisol urinario 24h</td>
+                        <td>Suero / Orina</td>
+                        <td>8 horas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="area-cabecera">
+                <img src="img/biologia-molecular.png" alt="Biologia Molecular" class="area-imagen">
+                <div>
+                    <h2>Biologia Molecular</h2>
+                    <p>Deteccion y cuantificacion de material genetico mediante tecnicas moleculares.</p>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Examen</th>
+                        <th>Pruebas incluidas</th>
+                        <th>Muestra</th>
+                        <th>Entrega</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BIO-MOL-001</td>
+                        <td>PCR SARS-CoV-2</td>
+                        <td>Deteccion de ARN viral por RT-PCR en tiempo real</td>
+                        <td>Hisopado nasofaringeo</td>
+                        <td>6 horas</td>
+                    </tr>
+                    <tr>
+                        <td>BIO-MOL-002</td>
+                        <td>Carga viral VIH</td>
+                        <td>Cuantificacion de copias de ARN-VIH por mL</td>
+                        <td>Plasma EDTA</td>
+                        <td>24 horas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <dialog id="dialogo-cierre">
+        <p>&iquest;Esta seguro que desea cerrar sesion?</p>
+        <button onclick="cerrarSesion()">Si, salir</button>
+        <button onclick="document.getElementById('dialogo-cierre').close()">Cancelar</button>
+    </dialog>
+
+    <footer>
+        <p>CHOPPERLAB &copy; 2026  </p>
+    </footer>
+
+    <script src="js/sesion.js"></script>
+    <script>
+        actualizarNav();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOPPERLAB - Contacto</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="img/logo.png" alt="Logo CHOPPERLAB">
+            <div>
+                <div class="nombre-sistema">CHOPPERLAB</div>
+                <div class="sub-sistema">Sistema de Gestion de Laboratorio Clinico</div>
+            </div>
+            <button class="btn-menu" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <nav id="nav-principal">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="contacto.html" class="activo">Contacto</a>
+            <a href="ordenes.html" class="nav-privado" style="display:none;">Ordenes</a>
+            <a href="intranet.html" class="nav-privado" style="display:none;">Intranet</a>
+            <a href="iniciar-sesion.html" id="nav-ingresar">Ingresar</a>
+            <div class="nav-sesion" id="nav-sesion">
+                <span class="nav-usuario">Hola, <strong id="nav-nombre"></strong></span>
+                <button class="btn-cerrar" onclick="abrirDialogoCierre()">Cerrar sesion</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <img src="img/laboratory.png" alt="Contacto CHOPPERLAB" class="banner">
+
+        <div class="card">
+            <h2>Sedes y Horarios de Atencion</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Sede</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Horario</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Sede Central</td>
+                        <td>Parque Historia de la Medicina Peruana s/n, altura de la cuadra 13 de Av. Grau, Cercado de
+                            Lima.</td>
+                        <td>(01) 320-0000</td>
+                        <td>Lun - Vie: 7am - 8pm</td>
+                        <td><span class="badge badge-success">Activo</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Sede Norte</td>
+                        <td>Av. Honorio Delgado 262, San Martín de Porres, Lima.</td>
+                        <td>(01) 321-1111</td>
+                        <td>Lun - Sab: 7am - 6pm</td>
+                        <td><span class="badge badge-success">Activo</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Sede Sur</td>
+                        <td>Av. César Vallejo 1390, El Agustino, Lima.</td>
+                        <td>(01) 322-2222</td>
+                        <td>Lun - Dom: 8am - 5pm</td>
+                        <td><span class="badge badge-success">Activo</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Sede Este</td>
+                        <td>Jr. Washington 1471, Cercado de Lima.</td>
+                        <td>(01) 323-3333</td>
+                        <td>Lun - Vie: 8am - 4pm</td>
+                        <td><span class="badge badge-warning">Mantenimiento</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Formulario de Contacto</h2>
+            <p>Complete el formulario y nos comunicaremos con usted a la brevedad posible.</p>
+            <br>
+
+            <form id="form-contacto" action="#" method="post" onsubmit="enviarFormulario(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nombre completo *</label>
+                        <input type="text" name="nombre" placeholder="Ej: Razzil Darkbrew" oninput="validarContacto(this)" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo electronico *</label>
+                        <input type="email" name="correo" placeholder="ejemplo@correo.com" oninput="validarContacto(this)" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Sede de interes</label>
+                        <select name="sede">
+                            <option value="">-- Seleccione una sede --</option>
+                            <option>Sede Central</option>
+                            <option>Sede Norte</option>
+                            <option>Sede Sur</option>
+                            <option>Sede Este</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Asunto *</label>
+                        <input type="text" name="asunto" placeholder="Motivo de su consulta" oninput="validarContacto(this)" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mensaje *</label>
+                    <textarea name="mensaje" placeholder="Escriba su mensaje aqui..." oninput="validarContacto(this)" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Enviar mensaje</button>
+            </form>
+
+            <p id="mensaje-enviado" class="mensaje-ok">
+                Mensaje enviado correctamente. Nos comunicaremos con usted a la brevedad.
+            </p>
+        </div>
+
+    </main>
+
+    <dialog id="dialogo-cierre">
+        <p>&iquest;Esta seguro que desea cerrar sesion?</p>
+        <button onclick="cerrarSesion()">Si, salir</button>
+        <button onclick="document.getElementById('dialogo-cierre').close()">Cancelar</button>
+    </dialog>
+
+    <footer>
+        <p>CHOPPERLAB &copy; 2026  </p>
+    </footer>
+
+    <div class="modal-overlay" id="modal-contacto">
+        <div class="modal-box">
+            <h3>Mensaje enviado correctamente</h3>
+            <p><strong>Nombre:</strong> <span id="modal-nombre"></span></p>
+            <p><strong>Correo:</strong> <span id="modal-correo"></span></p>
+            <p><strong>Sede:</strong> <span id="modal-sede"></span></p>
+            <p><strong>Asunto:</strong> <span id="modal-asunto"></span></p>
+            <p><strong>Mensaje:</strong> <span id="modal-mensaje"></span></p>
+            <button class="modal-cerrar" onclick="cerrarModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+
+        function validarContacto(input) {
+            if (input.value.trim() === '') {
+                input.style.borderColor = '#dc3545';
+            } else {
+                input.style.borderColor = '#0d6e8a';
+            }
+        }
+
+        function enviarFormulario(e) {
+            e.preventDefault();
+            var form = document.getElementById('form-contacto');
+            document.getElementById('modal-nombre').textContent = form.nombre.value;
+            document.getElementById('modal-correo').textContent = form.correo.value;
+            document.getElementById('modal-sede').textContent = form.sede.value || 'No seleccionada';
+            document.getElementById('modal-asunto').textContent = form.asunto.value;
+            document.getElementById('modal-mensaje').textContent = form.mensaje.value;
+            document.getElementById('modal-contacto').classList.add('visible');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-contacto').classList.remove('visible');
+            document.getElementById('form-contacto').reset();
+        }
+    </script>
+
+
+    <script src="js/sesion.js"></script>
+    <script>
+        actualizarNav();
+    </script>
+
+</body>
+
+</html>

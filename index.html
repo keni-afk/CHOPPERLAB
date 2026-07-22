@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOPPERLAB - Inicio</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img src="img/logo.png" alt="Logo CHOPPERLAB">
+            <div>
+                <div class="nombre-sistema">CHOPPERLAB</div>
+                <div class="sub-sistema">Sistema de Gestion de Laboratorio Clinico</div>
+            </div>
+            <button class="btn-menu" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <nav id="nav-principal">
+            <a href="index.html" class="activo">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="ordenes.html" class="nav-privado" style="display:none;">Ordenes</a>
+            <a href="intranet.html" class="nav-privado" style="display:none;">Intranet</a>
+            <a href="iniciar-sesion.html" id="nav-ingresar">Ingresar</a>
+            <div class="nav-sesion" id="nav-sesion">
+                <span class="nav-usuario">Hola, <strong id="nav-nombre"></strong></span>
+                <button class="btn-cerrar" onclick="abrirDialogoCierre()">Cerrar sesion</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <img src="img/laboratory.png" alt="Laboratorio Clinico CHOPPERLAB" class="banner">
+
+        <div class="bienvenida animar-entrada">
+            <img src="img/tubos.png" alt="Muestras de laboratorio">
+            <div>
+                <h2>Bienvenido al Sistema CHOPPERLAB</h2>
+                <p>
+                    Plataforma de gestion de laboratorio clinico. Permite registrar atenciones,
+                    buscar ordenes de examenes, visualizar resultados de pacientes y gestionar
+                    la impresion de documentos de manera centralizada.
+                </p>
+            </div>
+        </div>
+
+        <div class="modulos-grid">
+            <a href="iniciar-sesion.html" class="modulo-card m-verde animar-entrada">Ingreso de Atencion</a>
+            <a href="ordenes.html" class="modulo-card m-rojo animar-entrada">Busqueda de Ordenes</a>
+            <a href="servicios.html" class="modulo-card m-azul animar-entrada">Catalogo de Servicios</a>
+            <a href="nosotros.html" class="modulo-card m-naranja animar-entrada">Quienes Somos</a>
+            <a href="#" class="modulo-card m-morado" onclick="mostrarProximamente(event)">Visor de Resultados</a>
+            <a href="#" class="modulo-card m-teal" onclick="mostrarProximamente(event)">Check List</a>
+            <a href="#" class="modulo-card m-gris" onclick="mostrarProximamente(event)">Resumen General</a>
+            <a href="contacto.html" class="modulo-card m-oscuro">Contacto</a>
+        </div>
+
+        <div class="card">
+            <h2>Areas del Laboratorio</h2>
+            <p>CHOPPERLAB gestiona examenes en las siguientes areas clinicas. Seleccione un modulo para acceder:</p>
+            <ul class="lista-servicios">
+                <li>Hematologia — coagulacion, hemograma, recuento diferencial</li>
+                <li>Bioquimica Clinica — glucosa, perfil lipidico, enzimas hepaticas</li>
+                <li>Microbiologia — cultivos, antibiograma, urocultivo</li>
+                <li>Inmunologia — marcadores tumorales, autoinmunidad</li>
+                <li>Hormonologia — perfil tiroideo, hormonas reproductivas</li>
+                <li>Biologia Molecular — PCR, carga viral, secuenciacion</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <dialog id="dialogo-proximamente">
+        <p>Este modulo estara disponible proximamente.</p>
+        <button onclick="document.getElementById('dialogo-proximamente').close()">Cerrar</button>
+    </dialog>
+
+    <dialog id="dialogo-cierre">
+        <p>&iquest;Esta seguro que desea cerrar sesion?</p>
+        <button onclick="cerrarSesion()">Si, salir</button>
+        <button onclick="document.getElementById('dialogo-cierre').close()">Cancelar</button>
+    </dialog>
+
+    <footer>
+        <p>CHOPPERLAB &copy; 2026  </p>
+    </footer>
+
+
+    <script src="js/sesion.js"></script>
+    <script>
+        actualizarNav();
+
+        function mostrarProximamente(e) {
+            e.preventDefault();
+            document.getElementById('dialogo-proximamente').showModal();
+        }
+    </script>
+
+</body>
+
+</html>
